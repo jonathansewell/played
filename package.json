@@ -1,12 +1,19 @@
 {
   "scripts": {
-    "serve": "serve"
+    "serve": "serve ./dist",
+    "dev": "webpack --watch --progress"
   },
   "dependencies": {
     "geodist": "^0.2.1",
-    "serve": "^10.0.1"
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.2",
+    "serve": "^10.0.1",
     "webpack": "^4.19.1",
     "webpack-cli": "^3.1.0"
   }
