@@ -1,0 +1,49 @@
+.loadingNotice {
+  color: #fff;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.title {
+  color: #fff;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  margin: 0 0 10px;
+}
+
+.playgroundLink {
+  text-decoration: none;
+}
+
+.playground {
+  display: flex;
+  align-items: center;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 22px;
+  font-size: 18px;
+  background-color: rgba(41, 40, 40, 0.6);
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.playground:hover {
+  background-color: rgba(41, 40, 40, 0.9);
+}
+
+.name {
+  margin-left: 20px;
+  display: block;
+}
+.distance {
+  display: block;
+}
+.shortWalk {
+  color: rgb(102, 187, 102);
+}
+.mediumWalk {
+  color: rgb(255, 119, 68);
+}
+.farWalk {
+  color: rgb(238, 68, 68);
+}

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import geodist from "geodist";
 import playgrounds from "../../data";
+import styles from "./start.css";
 
 class Start extends Component {
   constructor(props) {
@@ -29,12 +30,25 @@ class Start extends Component {
   }
 
   renderPlayground({ name, distance }) {
+    const distanceClass =
+      distance <= 1
+        ? styles.shortWalk
+        : distance <= 2
+          ? styles.mediumWalk
+          : styles.farWalk;
+
     return (
       <a
         href={`https://www.google.com/maps/search/${encodeURI(name)}`}
         key={name}
+        className={styles.playgroundLink}
       >
-        <div>{`${name} (${distance.toFixed(1)} km)`}</div>
+        <div className={styles.playground}>
+          <span className={distanceClass + " " + styles.distance}>
+            {distance.toFixed(1)} km
+          </span>
+          <span className={styles.name}>{name}</span>
+        </div>
       </a>
     );
   }
@@ -44,11 +58,15 @@ class Start extends Component {
     const { longitude, latitude } = this.state;
 
     if (!geolocationAvailable) {
-      return <div>Please enable geolocation</div>;
+      return (
+        <div className={styles.loadingNotice}>Please enable geolocation</div>
+      );
     }
 
     if (!longitude || !latitude) {
-      return <div>Getting your location...</div>;
+      return (
+        <div className={styles.loadingNotice}>Getting your location...</div>
+      );
     }
 
     const playgroundsWithDistance = playgrounds.map(({ name, lat, lng }) => ({
@@ -56,9 +74,14 @@ class Start extends Component {
       name
     }));
 
-    return playgroundsWithDistance
-      .sort((a, b) => a.distance - b.distance)
-      .map(this.renderPlayground);
+    return (
+      <div>
+        <h1 className={styles.title}>Nearby Playgrounds</h1>
+        {playgroundsWithDistance
+          .sort((a, b) => a.distance - b.distance)
+          .map(this.renderPlayground)}
+      </div>
+    );
   }
 }
 

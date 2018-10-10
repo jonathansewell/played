@@ -1,7 +1,11 @@
 {
   "scripts": {
+    "start": "concurrently \"yarn webpack:watch\" \"yarn serve\" --kill-others",
+    "webpack:watch": "webpack --watch --progress",
     "serve": "serve ./dist",
-    "dev": "webpack --watch --progress"
+    "build": "webpack",
+    "upload": "aws s3 cp dist s3://played/ --recursive",
+    "deploy": "yarn run build && yarn run upload"
   },
   "dependencies": {
     "geodist": "^0.2.1",
@@ -13,7 +17,10 @@
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.2",
+    "concurrently": "^4.0.1",
+    "css-loader": "^1.0.0",
     "serve": "^10.0.1",
+    "style-loader": "^0.23.0",
     "webpack": "^4.19.1",
     "webpack-cli": "^3.1.0"
   }
